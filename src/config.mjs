@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 function loadEnvFile() {
   const env = {};
   if (existsSync('.env')) {
-    for (const line of readFileSync('.env', 'utf8').split('\n')) {
+    for (const line of readFileSync('.env', 'utf8').split(/\r?\n/)) {
       const m = line.match(/^([A-Z_]+)=(.*)$/);
       if (m) env[m[1]] = m[2];
     }
